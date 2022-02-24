@@ -9,3 +9,7 @@ body {
 .App {
   @apply text-center;
 }
+
+.Link {
+  @apply text-orange-300;
+}
