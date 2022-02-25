@@ -32,8 +32,11 @@ export default function App() {
             <Route exact path="/profile">
               <Profile />
             </Route>
-            <Route path="/profile/edit">
+            <Route path="/profile/create">
               <UpdateProfile />
+            </Route>
+            <Route path="/profile/edit">
+              <UpdateProfile isEditing />
             </Route>
           </Switch>
         </Router>

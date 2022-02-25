@@ -7,7 +7,7 @@ export default function UserProvider({ children }) {
     id: 1,
     name: 'Jordan',
     email: 'test@example.com',
-    birthday: '1901/01/01',
+    birthday: '1901-01-01',
     bio: 'I am real human.',
   });
 

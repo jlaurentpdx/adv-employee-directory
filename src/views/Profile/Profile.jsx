@@ -31,6 +31,9 @@ export default function Profile() {
           </tbody>
         </table>
       </fieldset>
+      <Link to="/profile/create" className="Link">
+        [ Create profile ]
+      </Link>
       <Link to="/profile/edit" className="Link">
         Edit profile
       </Link>
