@@ -1,12 +1,13 @@
 /*
   Example of using Tailwind classes in a CSS file:
 */
+html,
 body {
   @apply text-white bg-slate-800;
 }
 
 .App {
-  @apply text-center container mx-auto;
+  @apply container mx-auto text-center;
 }
 
 .Link {

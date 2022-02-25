@@ -8,33 +8,36 @@ import Auth from './views/Auth/Auth';
 import ConfirmEmail from './views/ConfirmEmail/ConfirmEmail';
 import Profile from './views/Profile/Profile';
 import UpdateProfile from './views/UpdateProfile/UpdateProfile';
+import UserProvider from './context/UserContext';
 
 export default function App() {
   return (
     <div className="App">
-      <Router>
-        <Header />
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/register">
-            <Auth isRegistering />
-          </Route>
-          <Route path="/login">
-            <Auth />
-          </Route>
-          <Route path="/confirm-email">
-            <ConfirmEmail />
-          </Route>
-          <Route exact path="/profile">
-            <Profile />
-          </Route>
-          <Route path="/profile/edit">
-            <UpdateProfile />
-          </Route>
-        </Switch>
-      </Router>
+      <UserProvider>
+        <Router>
+          <Header />
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/register">
+              <Auth isRegistering />
+            </Route>
+            <Route path="/login">
+              <Auth />
+            </Route>
+            <Route path="/confirm-email">
+              <ConfirmEmail />
+            </Route>
+            <Route exact path="/profile">
+              <Profile />
+            </Route>
+            <Route path="/profile/edit">
+              <UpdateProfile />
+            </Route>
+          </Switch>
+        </Router>
+      </UserProvider>
     </div>
   );
 }

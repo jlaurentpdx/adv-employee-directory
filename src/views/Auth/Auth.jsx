@@ -5,8 +5,11 @@ export default function Auth({ isRegistering = false }) {
   function handleSubmit(e) {
     e.preventDefault();
     try {
-      if (!isRegistering) history.push('/profile');
-      else history.push('/confirm-email');
+      if (isRegistering) {
+        history.push('/confirm-email');
+      } else {
+        history.push('/profile');
+      }
     } catch (error) {
       throw error;
     }
