@@ -4,7 +4,7 @@ export default function UpdateProfile() {
   return (
     <div className="flex flex-col">
       Editing Profile
-      <Link to="/profile/:id" className="Link">
+      <Link to="/profile" className="Link">
         Save changes, back to profile
       </Link>
     </div>

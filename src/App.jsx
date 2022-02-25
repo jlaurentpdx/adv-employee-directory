@@ -1,5 +1,6 @@
+// import styles from './App.module.css'; /* CSS Modules */
+
 import './App.css'; /* Global CSS */
-import styles from './App.module.css'; /* CSS Modules */
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Home from './views/Home/Home';
@@ -10,7 +11,7 @@ import UpdateProfile from './views/UpdateProfile/UpdateProfile';
 
 export default function App() {
   return (
-    <div className={`text-center`}>
+    <div className="App">
       <Router>
         <Header />
         <Switch>
@@ -26,10 +27,10 @@ export default function App() {
           <Route path="/confirm-email">
             <ConfirmEmail />
           </Route>
-          <Route exact path="/profile/:id">
+          <Route exact path="/profile">
             <Profile />
           </Route>
-          <Route path="/profile/:id/edit">
+          <Route path="/profile/edit">
             <UpdateProfile />
           </Route>
         </Switch>
