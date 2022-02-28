@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
-import { useUser } from '../../context/UserContext';
+import { useProfile } from '../../context/ProfileContext';
 
 export default function Profile() {
   const {
-    user: { name, email, birthday, bio },
-  } = useUser();
+    profile: { name, email, birthday, bio },
+  } = useProfile();
 
   return (
     <div className="flex flex-col">

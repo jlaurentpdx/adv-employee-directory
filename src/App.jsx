@@ -9,6 +9,7 @@ import ConfirmEmail from './views/ConfirmEmail/ConfirmEmail';
 import Profile from './views/Profile/Profile';
 import UpdateProfile from './views/UpdateProfile/UpdateProfile';
 import UserProvider from './context/UserContext';
+import ProfileProvider from './context/ProfileContext';
 
 export default function App() {
   return (
@@ -29,15 +30,17 @@ export default function App() {
             <Route path="/confirm-email">
               <ConfirmEmail />
             </Route>
-            <Route exact path="/profile">
-              <Profile />
-            </Route>
-            <Route path="/profile/create">
-              <UpdateProfile />
-            </Route>
-            <Route path="/profile/edit">
-              <UpdateProfile isEditing />
-            </Route>
+            <ProfileProvider>
+              <Route exact path="/profile">
+                <Profile />
+              </Route>
+              <Route path="/profile/create">
+                <UpdateProfile isCreating />
+              </Route>
+              <Route path="/profile/edit">
+                <UpdateProfile />
+              </Route>
+            </ProfileProvider>
           </Switch>
         </Router>
       </UserProvider>

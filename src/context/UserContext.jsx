@@ -1,15 +1,13 @@
 import { createContext, useContext, useState } from 'react';
+import { getUser } from '../services/users';
 
 const UserContext = createContext();
 
 export default function UserProvider({ children }) {
-  const [user, setUser] = useState({
-    id: 1,
-    name: 'Jordan',
-    email: 'test@example.com',
-    birthday: '1901-01-01',
-    bio: 'I am real human.',
-  });
+  const currentUser = getUser();
+  const [user, setUser] = useState(
+    currentUser ? { id: currentUser.id, email: currentUser.email } : {}
+  );
 
   const value = { user, setUser };
 

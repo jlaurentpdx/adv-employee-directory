@@ -1,19 +1,35 @@
 import { Link, useHistory } from 'react-router-dom';
+import { useUser } from '../../context/UserContext';
+import { useForm } from '../../hooks/useForm';
+import { signUpUser, signInUser } from '../../services/users';
 
 export default function Auth({ isRegistering = false }) {
+  const { setUser } = useUser();
+  const { formState, handleFormChange, formError, setFormError } = useForm({
+    email: '',
+    password: '',
+  });
   const history = useHistory();
-  function handleSubmit(e) {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const { email, password } = formState;
+
     try {
-      if (isRegistering) {
+      if (isRegistering && email && password.length > 8) {
+        await signUpUser(email, password);
         history.push('/confirm-email');
       } else {
+        const resp = await signInUser(email, password);
+        setUser(resp);
         history.push('/profile');
       }
     } catch (error) {
+      setFormError('invalid login');
       throw error;
     }
-  }
+    ``;
+  };
 
   return (
     <div className="flex flex-col">
@@ -29,18 +45,26 @@ export default function Auth({ isRegistering = false }) {
             className="mx-auto w-full border-2 bg-transparent"
             id="email"
             type="email"
+            name="email"
+            value={formState.email}
+            onChange={handleFormChange}
           />
           <label htmlFor="password">Password</label>
           <input
             className="mx-auto w-full border-2 bg-transparent"
             id="password"
             type="password"
+            name="password"
+            value={formState.password}
+            onChange={handleFormChange}
           />
           <button className="bg-slate-100 text-slate-800 w-full my-5">
             {isRegistering ? 'Sign Up' : 'Sign In'}
           </button>
         </form>
+        <p className="text-red-400">{formError}</p>
       </fieldset>
+
       {isRegistering ? (
         <>
           <p>Already have an account?</p>
